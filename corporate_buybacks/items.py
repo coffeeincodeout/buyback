@@ -8,11 +8,11 @@
 import scrapy
 
 
-class CorporateBuybacksItem(scrapy.Item):
-    date = scrapy.Field()
-    company = scrapy.Field()
-    percent_of_shares = scrapy.Field()
-    buyback_amount = scrapy.Field()
-    offer_type = scrapy.Field()
-    current_price = scrapy.Field()
-    week_range = scrapy.Field()
+# class CorporateBuybacksItem(scrapy.Item):
+#     date = scrapy.Field()
+#     company = scrapy.Field()
+#     percent_of_shares = scrapy.Field()
+#     buyback_amount = scrapy.Field()
+#     offer_type = scrapy.Field()
+#     current_price = scrapy.Field()
+#     week_range = scrapy.Field()

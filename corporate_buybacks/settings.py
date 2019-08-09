@@ -22,19 +22,19 @@ NEWSPIDER_MODULE = 'corporate_buybacks.spiders'
 RANDOM_UA_PER_PROXY = True
 
 # Retry many times since proxies often fail
-RETRY_TIMES = 10
+# RETRY_TIMES = 10
 # Retry on most error codes since proxies fail for different reasons
-RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
+# RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
 # Proxy list containing entries like
 # http://host1:port
 # http://username:password@host2:port
 # http://host3:port
-PROXY_LIST = os.path.join(os.path.dirname(sys.modules['corporate_buybacks'].__file__), 'proxies/proxies.txt')
+# PROXY_LIST = os.path.join(os.path.dirname(sys.modules['corporate_buybacks'].__file__), 'proxies/proxies.txt')
 # Proxy mode
 # 0 = Every requests have different proxy
 # 1 = Take only one proxy from the list and assign it to every requests
 # 2 = Put a custom proxy to use in the settings
-PROXY_MODE = 0
+# PROXY_MODE = 0
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -49,7 +49,7 @@ CONCURRENT_REQUESTS = 4
 DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 CONCURRENT_REQUESTS_PER_DOMAIN = 2
-#CONCURRENT_REQUESTS_PER_IP = 16
+CONCURRENT_REQUESTS_PER_IP = 4
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -75,10 +75,14 @@ DOWNLOADER_MIDDLEWARES = {
     'corporate_buybacks.middlewares.CorporateBuybacksDownloaderMiddleware': 543,
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
     'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,
-    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 90,
-    'scrapy_proxies.RandomProxy': 100,
-    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
+    # 'scrapy.downloadermiddlewares.retry.RetryMiddleware': 90,
+    # 'scrapy_proxies.RandomProxy': 100,
+    # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
+    'scrapy_crawlera.CrawleraMiddleware': 610
 }
+
+CRAWLERA_ENABLED = True
+CRAWLERA_APIKEY = '<API>'
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -88,9 +92,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'corporate_buybacks.pipelines.CorporateBuybacksPipeline': 300,
-}
+# ITEM_PIPELINES = {
+#    'corporate_buybacks.pipelines.CorporateBuybacksPipeline': 300,
+# }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -104,6 +108,8 @@ AUTOTHROTTLE_START_DELAY = 5
 #AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
 #AUTOTHROTTLE_DEBUG = False
+
+DOWNLOAD_TIMEOUT = 600
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
