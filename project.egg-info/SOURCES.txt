@@ -1,0 +1,13 @@
+setup.py
+corporate_buybacks/__init__.py
+corporate_buybacks/items.py
+corporate_buybacks/middlewares.py
+corporate_buybacks/pipelines.py
+corporate_buybacks/settings.py
+corporate_buybacks/spiders/__init__.py
+corporate_buybacks/spiders/buys_spider.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt
